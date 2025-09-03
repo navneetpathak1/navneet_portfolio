@@ -143,7 +143,6 @@ const About = () => {
         >
           {[
             { number: "50+", label: "Projects Built" },
-            { number: "1000+", label: "LeetCode Problems" },
             { number: "3+", label: "Years Coding" },
             { number: "∞", label: "Cups of Coffee" }
           ].map((stat, index) => (

@@ -6,12 +6,12 @@ const Skills = () => {
     {
       title: "Languages",
       color: "from-coral to-pink-500",
-      skills: ["C", "C++", "JavaScript", "TypeScript", "SQL", "HTML", "CSS"]
+      skills: ["C", "C++", "JavaScript", "TypeScript", "SQL"]
     },
     {
       title: "Frontend",
       color: "from-teal to-cyan-500",
-      skills: ["ReactJS", "Next.js", "Redux", "Tailwind CSS", "DaisyUI"]
+      skills: ["ReactJS", "Next.js", "Redux", "Tailwind CSS", "DaisyUI", "HTML", "CSS"]
     },
     {
       title: "Backend",
@@ -26,7 +26,7 @@ const Skills = () => {
     {
       title: "DevOps & Tools",
       color: "from-green-400 to-green-600",
-      skills: ["Git", "GitHub", "Docker", "NPM", "pnpm", "Turborepo", "Postman", "API Testing"]
+      skills: ["Git", "GitHub", "Docker", "NPM", "pnpm", "Turborepo", "Postman", "API Testing", "AWS"]
     },
     {
       title: "Core Concepts",
