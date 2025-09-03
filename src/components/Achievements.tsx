@@ -38,7 +38,7 @@ const Achievements = () => {
 
   const funFacts = [
     "Solves 3+ LeetCode problems daily",
-    "Built 50+ projects in 3 years",
+    "Built 30+ projects in 3 years",
     "Loves debugging at 3 AM",
     "Prefers dark mode everything",
     "Can code while listening to lofi beats",
@@ -211,7 +211,7 @@ const Achievements = () => {
             <blockquote className="text-2xl md:text-3xl font-bold mb-4 italic">
               "Code is like humor. When you have to explain it, it's bad."
             </blockquote>
-            <cite className="text-lg opacity-90">- Cory House (and every developer ever)</cite>
+            <cite className="text-lg opacity-90">- every developer </cite>
           </motion.div>
         </motion.div>
       </div>

@@ -14,7 +14,7 @@ const Projects = () => {
       type: "Solo Project",
       description: "Built a real-time collaborative whiteboard with drawing, writing, and sharing features. Features include real-time collaboration, drawing tools, text editing, and seamless sharing capabilities.",
       tech: ["TypeScript", "Next.js", "Express.js", "PostgreSQL", "Prisma ORM", "WebSockets", "Tailwind", "Monorepo (Turborepo)"],
-      github: "https://github.com/navneetpathak1909/excalidraw-clone",
+      github: "https://github.com/navneetpathak1/Excalidrow",
       live: "#",
       icon: FaCode,
       gradient: "from-coral to-pink-500"
@@ -25,7 +25,7 @@ const Projects = () => {
       type: "Solo Project",
       description: "Designed a full-stack payment gateway module with transaction security, rollback, and webhook handling. Includes comprehensive security measures, transaction monitoring, and automated rollback mechanisms.",
       tech: ["Node.js", "Next.js", "Express.js", "Prisma ORM", "PostgreSQL", "Recoil", "NextAuth", "Tailwind", "Monorepo"],
-      github: "https://github.com/navneetpathak1909/secure-payment-system",
+      github: "https://github.com/navneetpathak1/Secure_Payment_System",
       live: "#",
       icon: FaDatabase,
       gradient: "from-teal to-cyan-500"
@@ -36,7 +36,7 @@ const Projects = () => {
       type: "Solo Project",
       description: "Created a movie streaming + GPT-powered recommendation platform. Integrated multiple APIs for seamless movie discovery and AI-powered personalized recommendations with multilingual support.",
       tech: ["Firebase Auth", "Redux Toolkit", "TMDB API", "OpenAI API", "Multilingual Support"],
-      github: "https://github.com/navneetpathak1909/streamify-gpt",
+      github: "https://github.com/navneetpathak1/Streamify-GPT",
       live: "#",
       icon: FaRocket,
       gradient: "from-deep-purple to-purple-500"
@@ -50,7 +50,7 @@ const Projects = () => {
       type: "Full Stack",
       description: "A MERN-stack app for creating and sharing curated content collections from YouTube and Twitter. Features secure authentication, content organization, and shareable public links.",
       tech: ["React", "TypeScript", "Node.js", "Express.js", "MongoDB", "JWT", "Bcrypt", "Tailwind CSS", "Axios"],
-      github: "https://github.com/navneetpathak1909/brain-share-app",
+      github: "https://github.com/navneetpathak1/Brainly",
       live: "#",
       icon: FaShareAlt,
       gradient: "from-blue-500 to-indigo-600"
@@ -61,7 +61,7 @@ const Projects = () => {
       type: "Frontend",
       description: "A modern food-ordering SPA inspired by Swiggy, built with clean architecture and full test coverage. Features restaurant listing, real-time search, and Redux state management.",
       tech: ["React", "Redux Toolkit", "React Router", "Tailwind CSS", "Jest", "React Testing Library", "Custom Hooks"],
-      github: "https://github.com/navneetpathak1909/food-villa",
+      github: "https://github.com/navneetpathak1/Food-Ordering-App-React-",
       live: "#",
       icon: FaUtensils,
       gradient: "from-orange-500 to-red-500"
@@ -72,7 +72,7 @@ const Projects = () => {
       type: "Compiler Design",
       description: "A custom-built programming language with a fully working compiler in C++ using LLVM. Features full compiler pipeline from lexical analysis to native code generation.",
       tech: ["C++17", "LLVM", "CMake", "Compiler Design", "AST", "Type Checking", "Code Generation"],
-      github: "https://github.com/navneetpathak1909/gehu-language",
+      github: "https://github.com/navneetpathak1/Compiler-Project",
       live: "#",
       icon: FaLanguage,
       gradient: "from-green-500 to-emerald-600"
@@ -83,7 +83,7 @@ const Projects = () => {
       type: "Real-time App",
       description: "A sleek real-time chat application with modern design and built-in money transfer features. Features glassmorphism UI, WebSocket communication, and secure authentication.",
       tech: ["React", "Node.js", "Express.js", "MongoDB", "Socket.IO", "JWT", "Tailwind CSS", "WebSockets"],
-      github: "https://github.com/navneetpathak1909/liveline-chat",
+      github: "https://github.com/navneetpathak1/Pulse_Messing_Engine",
       live: "#",
       icon: FaComments,
       gradient: "from-purple-500 to-pink-500"
@@ -228,7 +228,7 @@ const Projects = () => {
                     <FaGithub />
                     <span>GitHub</span>
                   </motion.a>
-                  <motion.a
+                  {/* <motion.a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -238,7 +238,7 @@ const Projects = () => {
                   >
                     <FaExternalLinkAlt />
                     <span>Live Demo</span>
-                  </motion.a>
+                  </motion.a> */}
                 </div>
               </div>
 
@@ -394,7 +394,7 @@ const Projects = () => {
                           <FaGithub className="text-sm" />
                           <span>Code</span>
                         </motion.a>
-                        <motion.a
+                        {/* <motion.a
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -404,7 +404,7 @@ const Projects = () => {
                         >
                           <FaExternalLinkAlt className="text-sm" />
                           <span>Demo</span>
-                        </motion.a>
+                        </motion.a> */}
                       </div>
                     </div>
                   </motion.div>
@@ -439,7 +439,7 @@ const Projects = () => {
               Check out my GitHub profile for a complete collection of my work
             </p>
             <motion.a
-              href="https://github.com/navneetpathak1909"
+              href="https://github.com/navneetpathak1"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

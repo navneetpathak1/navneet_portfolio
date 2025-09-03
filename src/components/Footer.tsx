@@ -7,10 +7,10 @@ import { useTheme } from '../contexts/ThemeContext'
 const Footer = () => {
   const { theme } = useTheme()
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com/navneetpathak', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://linkedin.com/in/navneetpathak', label: 'LinkedIn' },
-    { icon: SiLeetcode, href: 'https://leetcode.com/navneetpathak', label: 'LeetCode' },
-    { icon: FaEnvelope, href: 'mailto:navneetpathak@example.com', label: 'Email' },
+    { icon: FaGithub, href: 'https://github.com/navneetpathak1', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://linkedin.com/in/navneetpathak1909', label: 'LinkedIn' },
+    { icon: SiLeetcode, href: 'https://leetcode.com/navneetpathak19', label: 'LeetCode' },
+    { icon: FaEnvelope, href: 'mailto:navneetpathak1909@gmail.com', label: 'Email' },
   ]
 
   const quickLinks = [

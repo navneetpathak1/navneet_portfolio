@@ -78,10 +78,17 @@
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+  /* Fallback color for environments that don't support background-clip:text */
+  color: rgb(var(--text-primary));
+  background: linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)), rgb(var(--color-accent)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.dark .gradient-text {
+  /* Slight shadow to improve contrast on dark backgrounds */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 /* Glow Effect */
@@ -148,7 +155,9 @@
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #6C5CE7);
+    /* Ensure the same variable-driven gradient inside components layer */
+    color: rgb(var(--text-primary));
+    background: linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)), rgb(var(--color-accent)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -164,7 +164,7 @@ const About = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {[
-            { number: "50+", label: "Projects Built" },
+            { number: "30+", label: "Projects Built" },
             { number: "3+", label: "Years Coding" },
             { number: "∞", label: "Cups of Coffee" }
           ].map((stat, index) => (

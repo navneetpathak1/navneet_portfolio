@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaCode } from 'react-icons/fa'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import AboutRole from './AboutRole'
 import { useTheme } from '../contexts/ThemeContext'
@@ -9,7 +9,7 @@ const Hero = () => {
   const socialLinks = [
     { icon: FaGithub, href: 'https://github.com/navneetpathak1', label: 'GitHub' },
     { icon: FaLinkedin, href: 'https://www.linkedin.com/in/navneetpathak1909/', label: 'LinkedIn' },
-    { icon: SiLeetcode, href: 'https://leetcode.com/navneetpathak19', label: 'LeetCode' },
+    { icon: SiLeetcode, href: 'https://leetcode.com/u/navneetpathak19/', label: 'LeetCode' },
   ]
 
   const floatingShapes = [
@@ -188,6 +188,12 @@ const Hero = () => {
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const el = document.getElementById('projects')
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              }}
               className="px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               View My Work
@@ -202,6 +208,15 @@ const Hero = () => {
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const resumeHref = new URL('../resume/navneet_resume.pdf', import.meta.url).href
+                const link = document.createElement('a')
+                link.href = resumeHref
+                link.setAttribute('download', 'Navneet_Pathak_Resume.pdf')
+                document.body.appendChild(link)
+                link.click()
+                link.remove()
+              }}
               className={`px-6 py-3 sm:px-8 sm:py-4 font-semibold rounded-lg transition-all duration-300 border-2 ${
                 theme === 'dark'
                   ? 'border-white text-white hover:bg-white hover:text-gray-900'
@@ -234,6 +249,12 @@ const Hero = () => {
           className={`w-6 h-10 border-2 rounded-full flex justify-center cursor-pointer ${
             theme === 'dark' ? 'border-white' : 'border-gray-600'
           }`}
+          onClick={() => {
+            const el = document.getElementById('projects')
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+          }}
           whileHover={{ scale: 1.2 }}
         >
           <motion.div
