@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(-45deg, #FF6B6B, #4ECDC4, #6C5CE7, #FDCB6E);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #6C5CE7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .floating-shape {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .glow-effect:hover {
+    box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #e55a5a, #3bb5ad);
+}
+
+/* Floating animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+  }
+}
+
+/* Heart animation */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
