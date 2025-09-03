@@ -206,7 +206,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 - **Email**: navneetpathak1909@gmail.com
 - **LinkedIn**: [navneetpathak1909](https://www.linkedin.com/in/navneetpathak1909/)
-- **GitHub**: [navneetpathak1909](https://github.com/navneetpathak1909)
+- **GitHub**: [navneetpathak1909](https://github.com/navneetpathak1)
 - **LeetCode**: [navneetpathak19](https://leetcode.com/navneetpathak19)
 
 ## 🙏 Acknowledgments
