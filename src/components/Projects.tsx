@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaRocket, FaShareAlt, FaUtensils, FaLanguage, FaComments } from 'react-icons/fa'
+import { FaGithub, FaCode, FaDatabase, FaRocket, FaShareAlt, FaUtensils, FaLanguage, FaComments } from 'react-icons/fa'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Projects = () => {
@@ -90,7 +90,7 @@ const Projects = () => {
     }
   ]
 
-  const allProjects = [...featuredProjects, ...additionalProjects]
+  // const allProjects = [...featuredProjects, ...additionalProjects]
 
   const containerVariants = {
     hidden: { opacity: 0 },

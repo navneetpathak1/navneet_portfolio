@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { FaTrophy, FaGraduationCap, FaLightbulb, FaFire, FaCode, FaHeart } from 'react-icons/fa'
 import { useTheme } from '../contexts/ThemeContext'

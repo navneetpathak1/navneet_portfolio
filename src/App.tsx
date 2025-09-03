@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { ThemeProvider, useTheme } from './contexts/ThemeContext'
 import Navbar from './components/Navbar.tsx'
 import Hero from './components/Hero.tsx'
