@@ -1,16 +1,20 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaRocket } from 'react-icons/fa'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaRocket, FaShareAlt, FaUtensils, FaLanguage, FaComments } from 'react-icons/fa'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Projects = () => {
-  const projects = [
+  const { theme } = useTheme()
+  const [showMore, setShowMore] = useState(false)
+  
+  const featuredProjects = [
     {
       title: "Excalidraw Clone",
       period: "Jul 2025 – Aug 2025",
       type: "Solo Project",
       description: "Built a real-time collaborative whiteboard with drawing, writing, and sharing features. Features include real-time collaboration, drawing tools, text editing, and seamless sharing capabilities.",
       tech: ["TypeScript", "Next.js", "Express.js", "PostgreSQL", "Prisma ORM", "WebSockets", "Tailwind", "Monorepo (Turborepo)"],
-      github: "https://github.com/navneetpathak/excalidraw-clone",
+      github: "https://github.com/navneetpathak1909/excalidraw-clone",
       live: "#",
       icon: FaCode,
       gradient: "from-coral to-pink-500"
@@ -21,7 +25,7 @@ const Projects = () => {
       type: "Solo Project",
       description: "Designed a full-stack payment gateway module with transaction security, rollback, and webhook handling. Includes comprehensive security measures, transaction monitoring, and automated rollback mechanisms.",
       tech: ["Node.js", "Next.js", "Express.js", "Prisma ORM", "PostgreSQL", "Recoil", "NextAuth", "Tailwind", "Monorepo"],
-      github: "https://github.com/navneetpathak/secure-payment-system",
+      github: "https://github.com/navneetpathak1909/secure-payment-system",
       live: "#",
       icon: FaDatabase,
       gradient: "from-teal to-cyan-500"
@@ -32,12 +36,61 @@ const Projects = () => {
       type: "Solo Project",
       description: "Created a movie streaming + GPT-powered recommendation platform. Integrated multiple APIs for seamless movie discovery and AI-powered personalized recommendations with multilingual support.",
       tech: ["Firebase Auth", "Redux Toolkit", "TMDB API", "OpenAI API", "Multilingual Support"],
-      github: "https://github.com/navneetpathak/streamify-gpt",
+      github: "https://github.com/navneetpathak1909/streamify-gpt",
       live: "#",
       icon: FaRocket,
       gradient: "from-deep-purple to-purple-500"
     }
   ]
+
+  const additionalProjects = [
+    {
+      title: "Brain Share App",
+      period: "2024",
+      type: "Full Stack",
+      description: "A MERN-stack app for creating and sharing curated content collections from YouTube and Twitter. Features secure authentication, content organization, and shareable public links.",
+      tech: ["React", "TypeScript", "Node.js", "Express.js", "MongoDB", "JWT", "Bcrypt", "Tailwind CSS", "Axios"],
+      github: "https://github.com/navneetpathak1909/brain-share-app",
+      live: "#",
+      icon: FaShareAlt,
+      gradient: "from-blue-500 to-indigo-600"
+    },
+    {
+      title: "Food Villa",
+      period: "2024",
+      type: "Frontend",
+      description: "A modern food-ordering SPA inspired by Swiggy, built with clean architecture and full test coverage. Features restaurant listing, real-time search, and Redux state management.",
+      tech: ["React", "Redux Toolkit", "React Router", "Tailwind CSS", "Jest", "React Testing Library", "Custom Hooks"],
+      github: "https://github.com/navneetpathak1909/food-villa",
+      live: "#",
+      icon: FaUtensils,
+      gradient: "from-orange-500 to-red-500"
+    },
+    {
+      title: "Gehu Programming Language",
+      period: "2024",
+      type: "Compiler Design",
+      description: "A custom-built programming language with a fully working compiler in C++ using LLVM. Features full compiler pipeline from lexical analysis to native code generation.",
+      tech: ["C++17", "LLVM", "CMake", "Compiler Design", "AST", "Type Checking", "Code Generation"],
+      github: "https://github.com/navneetpathak1909/gehu-language",
+      live: "#",
+      icon: FaLanguage,
+      gradient: "from-green-500 to-emerald-600"
+    },
+    {
+      title: "LiveLine Chat App",
+      period: "2024",
+      type: "Real-time App",
+      description: "A sleek real-time chat application with modern design and built-in money transfer features. Features glassmorphism UI, WebSocket communication, and secure authentication.",
+      tech: ["React", "Node.js", "Express.js", "MongoDB", "Socket.IO", "JWT", "Tailwind CSS", "WebSockets"],
+      github: "https://github.com/navneetpathak1909/liveline-chat",
+      live: "#",
+      icon: FaComments,
+      gradient: "from-purple-500 to-pink-500"
+    }
+  ]
+
+  const allProjects = [...featuredProjects, ...additionalProjects]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,7 +112,11 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="section-padding bg-gradient-to-br from-base-200 to-base-300">
+    <section id="projects" className={`section-padding transition-colors duration-500 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
+        : 'bg-gradient-to-br from-gray-100 to-gray-200'
+    }`}>
       <div className="container-custom">
         <motion.div
           variants={containerVariants}
@@ -76,7 +133,9 @@ const Projects = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-neutral-600 max-w-3xl mx-auto"
+            className={`text-xl max-w-3xl mx-auto ${
+              theme === 'dark' ? 'text-gray-300' : 'text-neutral-600'
+            }`}
           >
             Showcasing my passion for building scalable systems and innovative solutions
           </motion.p>
@@ -89,12 +148,16 @@ const Projects = () => {
           viewport={{ once: true }}
           className="space-y-12"
         >
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className={`bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden ${
+              className={`rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden ${
+                theme === 'dark' 
+                  ? 'bg-gray-800 border border-gray-700' 
+                  : 'bg-white'
+              } ${
                 index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
               } flex flex-col lg:flex`}
             >
@@ -104,28 +167,44 @@ const Projects = () => {
                     <project.icon className="text-2xl" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-neutral-800">{project.title}</h3>
-                    <div className="flex items-center space-x-4 text-sm text-neutral-500">
+                    <h3 className={`text-2xl font-bold ${
+                      theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
+                    }`}>{project.title}</h3>
+                    <div className={`flex items-center space-x-4 text-sm ${
+                      theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                    }`}>
                       <span>{project.period}</span>
                       <span>•</span>
-                      <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">
+                      <span className={`px-2 py-1 rounded-full ${
+                        theme === 'dark' 
+                          ? 'bg-blue-500/30 text-blue-300' 
+                          : 'bg-blue-100 text-blue-700'
+                      }`}>
                         {project.type}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-neutral-600 mb-6 leading-relaxed">
+                <p className={`mb-6 leading-relaxed ${
+                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                }`}>
                   {project.description}
                 </p>
 
                 <div className="mb-8">
-                  <h4 className="font-semibold text-neutral-800 mb-3">Technologies Used:</h4>
+                  <h4 className={`font-semibold mb-3 ${
+                    theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
+                  }`}>Technologies Used:</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-200 text-neutral-700 rounded-full text-sm font-medium"
+                        className={`px-3 py-1 rounded-full text-sm font-medium ${
+                          theme === 'dark'
+                            ? 'bg-gray-600 text-gray-100'
+                            : 'bg-gray-200 text-gray-800'
+                        }`}
                       >
                         {tech}
                       </span>
@@ -140,7 +219,11 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-full hover:shadow-lg transition-all duration-300"
+                    className={`flex items-center space-x-2 px-6 py-3 text-white rounded-full hover:shadow-lg transition-all duration-300 ${
+                      theme === 'dark'
+                        ? 'bg-gradient-to-r from-gray-600 to-gray-700'
+                        : 'bg-gradient-to-r from-gray-700 to-gray-800'
+                    }`}
                   >
                     <FaGithub />
                     <span>GitHub</span>
@@ -177,6 +260,160 @@ const Projects = () => {
           ))}
         </motion.div>
 
+        {/* See More Projects Button */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <motion.button
+            variants={itemVariants}
+            onClick={() => setShowMore(!showMore)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-8 py-4 rounded-full font-semibold transition-all duration-300 ${
+              theme === 'dark'
+                ? 'bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:from-gray-600 hover:to-gray-700'
+                : 'bg-gradient-to-r from-gray-800 to-gray-900 text-white hover:from-gray-700 hover:to-gray-800'
+            } shadow-lg hover:shadow-xl`}
+          >
+            {showMore ? 'Show Less Projects' : 'See More Projects'}
+          </motion.button>
+        </motion.div>
+
+        {/* Additional Projects */}
+        <AnimatePresence>
+          {showMore && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-12"
+            >
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-3xl font-bold gradient-text text-center mb-12"
+              >
+                More Projects
+              </motion.h3>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              >
+                {additionalProjects.map((project, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                    whileHover={{ scale: 1.02 }}
+                    className={`rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden ${
+                      theme === 'dark' 
+                        ? 'bg-gray-800 border border-gray-700' 
+                        : 'bg-white'
+                    }`}
+                  >
+                    <div className="p-6">
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className={`p-3 rounded-xl bg-gradient-to-r ${project.gradient} text-white`}>
+                          <project.icon className="text-xl" />
+                        </div>
+                        <div>
+                          <h4 className={`text-xl font-bold ${
+                            theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
+                          }`}>{project.title}</h4>
+                          <div className={`flex items-center space-x-2 text-sm ${
+                            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                          }`}>
+                            <span>{project.period}</span>
+                            <span>•</span>
+                            <span className={`px-2 py-1 rounded-full text-xs ${
+                              theme === 'dark' 
+                                ? 'bg-blue-500/30 text-blue-300' 
+                                : 'bg-blue-100 text-blue-700'
+                            }`}>
+                              {project.type}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <p className={`mb-4 text-sm leading-relaxed ${
+                        theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                      }`}>
+                        {project.description}
+                      </p>
+
+                      <div className="mb-4">
+                        <div className="flex flex-wrap gap-1">
+                          {project.tech.slice(0, 4).map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                theme === 'dark'
+                                  ? 'bg-gray-600 text-gray-100'
+                                  : 'bg-gray-200 text-gray-800'
+                              }`}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {project.tech.length > 4 && (
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              theme === 'dark'
+                                ? 'bg-gray-600 text-gray-100'
+                                : 'bg-gray-200 text-gray-800'
+                            }`}>
+                              +{project.tech.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex space-x-3">
+                        <motion.a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`flex items-center space-x-2 px-4 py-2 text-white rounded-lg text-sm font-medium transition-all duration-300 ${
+                            theme === 'dark'
+                              ? 'bg-gradient-to-r from-gray-500 to-gray-600'
+                              : 'bg-gradient-to-r from-gray-600 to-gray-700'
+                          }`}
+                        >
+                          <FaGithub className="text-sm" />
+                          <span>Code</span>
+                        </motion.a>
+                        <motion.a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300"
+                        >
+                          <FaExternalLinkAlt className="text-sm" />
+                          <span>Demo</span>
+                        </motion.a>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Call to Action */}
         <motion.div
           variants={containerVariants}
@@ -187,16 +424,22 @@ const Projects = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="bg-white rounded-2xl p-8 shadow-lg"
+            className={`rounded-2xl p-8 shadow-lg ${
+              theme === 'dark' 
+                ? 'bg-gray-800 border border-gray-700' 
+                : 'bg-white'
+            }`}
           >
             <h3 className="text-2xl font-bold gradient-text mb-4">
-              Want to see more projects?
+              Want to see even more projects?
             </h3>
-            <p className="text-neutral-600 mb-6">
+            <p className={`mb-6 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-neutral-600'
+            }`}>
               Check out my GitHub profile for a complete collection of my work
             </p>
             <motion.a
-              href="https://github.com/navneetpathak"
+              href="https://github.com/navneetpathak1909"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -204,7 +447,7 @@ const Projects = () => {
               className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-coral to-teal text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300"
             >
               <FaGithub />
-              <span>View All Projects</span>
+              <span>View All Projects on GitHub</span>
             </motion.a>
           </motion.div>
         </motion.div>

@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaTrophy, FaGraduationCap, FaLightbulb, FaFire, FaCode, FaHeart } from 'react-icons/fa'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Achievements = () => {
+  const { theme } = useTheme()
   const achievements = [
     {
       icon: FaTrophy,
@@ -63,7 +65,9 @@ const Achievements = () => {
   }
 
   return (
-    <section id="achievements" className="section-padding bg-white">
+    <section id="achievements" className={`section-padding transition-colors duration-500 ${
+      theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+    }`}>
       <div className="container-custom">
         <motion.div
           variants={containerVariants}
@@ -80,7 +84,9 @@ const Achievements = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-neutral-600 max-w-3xl mx-auto"
+            className={`text-xl max-w-3xl mx-auto ${
+              theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+            }`}
           >
             Milestones, recognition, and the quirky side of a developer's life
           </motion.p>
@@ -99,7 +105,11 @@ const Achievements = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ scale: 1.05, rotate: 2 }}
-              className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className={`rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
+                  : 'bg-gradient-to-br from-white to-gray-50 border border-gray-100'
+              }`}
             >
               <div className="flex items-start space-x-4">
                 <div className={`p-4 rounded-2xl bg-gradient-to-r ${achievement.color} text-white`}>
@@ -108,11 +118,15 @@ const Achievements = () => {
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
                     <span className="text-2xl">{achievement.emoji}</span>
-                    <h3 className="text-xl font-bold text-neutral-800">
+                    <h3 className={`text-xl font-bold ${
+                      theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
+                    }`}>
                       {achievement.title}
                     </h3>
                   </div>
-                  <p className="text-neutral-600">
+                  <p className={`${
+                    theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                  }`}>
                     {achievement.description}
                   </p>
                 </div>
@@ -127,7 +141,11 @@ const Achievements = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl p-8 lg:p-12"
+          className={`rounded-3xl p-8 lg:p-12 ${
+            theme === 'dark'
+              ? 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700'
+              : 'bg-gradient-to-br from-primary/5 to-secondary/5'
+          }`}
         >
           <motion.div
             variants={itemVariants}
@@ -140,7 +158,9 @@ const Achievements = () => {
               </h3>
               <FaCode className="text-3xl text-secondary" />
             </div>
-            <p className="text-lg text-neutral-600">
+            <p className={`text-lg ${
+              theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+            }`}>
               The quirky and interesting side of a developer's journey
             </p>
           </motion.div>
@@ -157,13 +177,19 @@ const Achievements = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
+                className={`rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-gray-800 border border-gray-700' 
+                    : 'bg-white'
+                }`}
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-gradient-to-r from-coral to-teal rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {index + 1}
                   </div>
-                  <p className="text-neutral-700 font-medium">{fact}</p>
+                  <p className={`font-medium ${
+                    theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+                  }`}>{fact}</p>
                 </div>
               </motion.div>
             ))}

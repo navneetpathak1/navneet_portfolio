@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaGraduationCap, FaCode, FaHeart, FaRocket } from 'react-icons/fa'
+import { useTheme } from '../contexts/ThemeContext'
 
 const About = () => {
+  const { theme } = useTheme()
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,7 +48,11 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-gradient-to-br from-base-200 to-base-300">
+    <section id="about" className={`section-padding transition-colors duration-500 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
+        : 'bg-gradient-to-br from-gray-100 to-gray-200'
+    }`}>
       <div className="container-custom">
         <motion.div
           variants={containerVariants}
@@ -63,7 +69,9 @@ const About = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-neutral-600 max-w-3xl mx-auto"
+            className={`text-xl max-w-3xl mx-auto ${
+              theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+            }`}
           >
             A passionate developer who blends technical depth with creativity
           </motion.p>
@@ -79,7 +87,9 @@ const About = () => {
           >
             <motion.p
               variants={itemVariants}
-              className="text-lg text-neutral-700 leading-relaxed"
+              className={`text-lg leading-relaxed ${
+                theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+              }`}
             >
               Hey there! I'm <span className="font-semibold text-primary">Navneet Pathak</span>, 
               a Computer Engineering student at Graphic Era Hill University, passionate about 
@@ -88,7 +98,9 @@ const About = () => {
             
             <motion.p
               variants={itemVariants}
-              className="text-lg text-neutral-700 leading-relaxed"
+              className={`text-lg leading-relaxed ${
+                theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+              }`}
             >
               I'm deeply passionate about <span className="font-semibold text-secondary">full-stack development</span>, 
               algorithms, and system design. You'll find me actively contributing to open-source projects 
@@ -97,7 +109,9 @@ const About = () => {
             
             <motion.p
               variants={itemVariants}
-              className="text-lg text-neutral-700 leading-relaxed"
+              className={`text-lg leading-relaxed ${
+                theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+              }`}
             >
               What drives me is the ability to turn <span className="font-semibold text-accent">abstract ideas 
               into scalable software</span> with clean, type-safe, and maintainable code. I believe in 
@@ -117,15 +131,23 @@ const About = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.05, rotate: 2 }}
-                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className={`p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-gray-800 border border-gray-700' 
+                    : 'bg-white'
+                }`}
               >
                 <div className="text-3xl text-primary mb-4">
                   <highlight.icon />
                 </div>
-                <h3 className="font-semibold text-lg mb-2 text-neutral-800">
+                <h3 className={`font-semibold text-lg mb-2 ${
+                  theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
+                }`}>
                   {highlight.title}
                 </h3>
-                <p className="text-sm text-neutral-600">
+                <p className={`text-sm ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                }`}>
                   {highlight.description}
                 </p>
               </motion.div>
@@ -155,7 +177,9 @@ const About = () => {
               <div className="text-4xl font-bold gradient-text mb-2">
                 {stat.number}
               </div>
-              <div className="text-neutral-600 font-medium">
+              <div className={`font-medium ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
                 {stat.label}
               </div>
             </motion.div>

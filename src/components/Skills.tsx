@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Skills = () => {
+  const { theme } = useTheme()
   const skillCategories = [
     {
       title: "Languages",
@@ -55,7 +57,9 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="section-padding bg-white">
+    <section id="skills" className={`section-padding transition-colors duration-500 ${
+      theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+    }`}>
       <div className="container-custom">
         <motion.div
           variants={containerVariants}
@@ -72,7 +76,9 @@ const Skills = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-neutral-600 max-w-3xl mx-auto"
+            className={`text-xl max-w-3xl mx-auto ${
+              theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+            }`}
           >
             A comprehensive toolkit for building modern, scalable applications
           </motion.p>
@@ -90,7 +96,11 @@ const Skills = () => {
               key={categoryIndex}
               variants={itemVariants}
               whileHover={{ scale: 1.05, rotate: 1 }}
-              className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className={`rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700'
+                  : 'bg-gradient-to-br from-white to-gray-50 border border-gray-100'
+              }`}
             >
               <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${category.color} text-white font-semibold mb-6`}>
                 {category.title}
@@ -108,7 +118,9 @@ const Skills = () => {
                     className="flex items-center space-x-3"
                   >
                     <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color}`} />
-                    <span className="text-neutral-700 font-medium">{skill}</span>
+                    <span className={`font-medium ${
+                      theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+                    }`}>{skill}</span>
                   </motion.div>
                 ))}
               </div>
@@ -146,10 +158,16 @@ const Skills = () => {
                 className="space-y-2"
               >
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold text-neutral-700">{item.skill}</span>
-                  <span className="text-sm text-neutral-500">{item.level}%</span>
+                  <span className={`font-semibold ${
+                    theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+                  }`}>{item.skill}</span>
+                  <span className={`text-sm ${
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  }`}>{item.level}%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className={`w-full rounded-full h-3 ${
+                  theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
+                }`}>
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${item.level}%` }}

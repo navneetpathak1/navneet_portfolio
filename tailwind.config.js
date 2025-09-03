@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -40,7 +41,10 @@ export default {
           '0%': { boxShadow: '0 0 5px #FF6B6B, 0 0 10px #FF6B6B, 0 0 15px #FF6B6B' },
           '100%': { boxShadow: '0 0 10px #FF6B6B, 0 0 20px #FF6B6B, 0 0 30px #FF6B6B' },
         }
-      }
+      },
+      screens: {
+        'xs': '475px',
+      },
     },
   },
   plugins: [require('daisyui')],

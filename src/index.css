@@ -2,6 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom CSS Variables for Theme Support */
+:root {
+  --color-primary: 59 130 246;
+  --color-secondary: 147 51 234;
+  --color-accent: 236 72 153;
+  --bg-primary: 249 250 251; /* gray-50 */
+  --bg-secondary: 255 255 255; /* white */
+  --text-primary: 17 24 39; /* gray-900 */
+  --text-secondary: 75 85 99; /* gray-600 */
+  --text-muted: 107 114 128; /* gray-500 */
+}
+
+.dark {
+  --color-primary: 96 165 250;
+  --color-secondary: 168 85 247;
+  --color-accent: 244 114 182;
+  --bg-primary: 17 24 39; /* gray-900 */
+  --bg-secondary: 31 41 55; /* gray-800 */
+  --text-primary: 243 244 246; /* gray-100 */
+  --text-secondary: 209 213 219; /* gray-300 */
+  --text-muted: 156 163 175; /* gray-400 */
+}
+
+/* Responsive Container */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Responsive Text Sizes */
+.text-responsive-xl {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+}
+
+.text-responsive-2xl {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+}
+
+.text-responsive-3xl {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+}
+
+.text-responsive-4xl {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+}
+
+/* Smooth Transitions */
+* {
+  @apply transition-colors duration-300;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--text-muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--text-secondary));
+}
+
+/* Glass Effect */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Effect */
+.glow-effect {
+  box-shadow: 0 0 20px rgba(var(--color-primary), 0.3);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .container-custom {
+    @apply px-4;
+  }
+  
+  /* Reduce motion for better mobile performance */
+  .motion-reduce {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-custom {
+    @apply px-6;
+  }
+}
+
+/* Desktop Optimizations */
+@media (min-width: 1025px) {
+  .container-custom {
+    @apply px-8;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -10,11 +124,19 @@
   body {
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
+    background-color: rgb(var(--bg-primary));
+    color: rgb(var(--text-primary));
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', system-ui, sans-serif;
     font-weight: 700;
+    color: rgb(var(--text-primary));
+  }
+  
+  p {
+    color: rgb(var(--text-secondary));
   }
 }
 

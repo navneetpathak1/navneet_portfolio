@@ -2,8 +2,10 @@ import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaCode } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import AboutRole from './AboutRole'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Hero = () => {
+  const { theme } = useTheme()
   const socialLinks = [
     { icon: FaGithub, href: 'https://github.com/navneetpathak1', label: 'GitHub' },
     { icon: FaLinkedin, href: 'https://www.linkedin.com/in/navneetpathak1909/', label: 'LinkedIn' },
@@ -19,13 +21,17 @@ const Hero = () => {
   ]
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <section id="home" className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900' 
+        : 'bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-50'
+    }`}>
       
       {/* Floating Shapes */}
       {floatingShapes.map((shape, index) => (
         <motion.div
           key={index}
-          className="absolute text-4xl opacity-20"
+          className="absolute text-2xl sm:text-3xl md:text-4xl opacity-20"
           initial={{ 
             x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
             y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
@@ -53,7 +59,9 @@ const Hero = () => {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-white rounded-full opacity-30"
+          className={`absolute w-1 h-1 sm:w-2 sm:h-2 rounded-full opacity-30 ${
+            theme === 'dark' ? 'bg-white' : 'bg-gray-600'
+          }`}
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -74,7 +82,7 @@ const Hero = () => {
         />
       ))}
 
-      <div className="relative z-10 text-center px-4">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 100, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -93,17 +101,22 @@ const Hero = () => {
               delay: 0.3,
               ease: [0.25, 0.46, 0.45, 0.94]
             }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 text-shadow-lg"
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}
           >
             Hi, I'm{' '}
             <motion.span 
-              className="gradient-text bg-white bg-clip-text text-transparent"
+              className={`${
+                theme === 'dark' 
+                  ? 'bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent'
+                  : 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'
+              }`}
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               whileHover={{ 
                 scale: 1.05,
-                textShadow: "0 0 20px rgba(255,255,255,0.5)",
                 transition: { duration: 0.3 }
               }}
             >
@@ -115,7 +128,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-xl md:text-2xl text-white/90 mb-8 text-shadow"
+            className={`text-xl md:text-2xl mb-8 text-shadow ${
+              theme === 'dark' ? 'text-white/90' : 'text-gray-800/90'
+            }`}
           >
             <AboutRole />
           </motion.div>
@@ -124,7 +139,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex justify-center space-x-6 mb-12"
+            className="flex justify-center space-x-4 sm:space-x-6 mb-8 sm:mb-12"
           >
             {socialLinks.map((social, index) => (
               <motion.a
@@ -146,7 +161,11 @@ const Hero = () => {
                   transition: { duration: 0.3 }
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-4xl text-white hover:text-neon-yellow transition-colors duration-300 glow-effect p-3 rounded-full"
+                className={`text-2xl sm:text-3xl md:text-4xl transition-colors duration-300 p-2 sm:p-3 rounded-full ${
+                  theme === 'dark'
+                    ? 'text-white hover:text-yellow-400'
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 <social.icon />
               </motion.a>
@@ -157,7 +176,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto"
           >
             <motion.button
               initial={{ opacity: 0, x: -50 }}
@@ -165,12 +184,11 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 1.1 }}
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
                 y: -2,
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
-              className="btn btn-lg btn-primary text-white border-none glow-effect"
+              className="px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               View My Work
             </motion.button>
@@ -180,12 +198,15 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 1.2 }}
               whileHover={{ 
                 scale: 1.05,
-                backgroundColor: "white",
-                color: "rgb(59, 130, 246)",
+                y: -2,
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
-              className="btn btn-lg btn-outline btn-white text-white hover:bg-white hover:text-primary"
+              className={`px-6 py-3 sm:px-8 sm:py-4 font-semibold rounded-lg transition-all duration-300 border-2 ${
+                theme === 'dark'
+                  ? 'border-white text-white hover:bg-white hover:text-gray-900'
+                  : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white'
+              }`}
             >
               Download Resume
             </motion.button>
@@ -210,7 +231,9 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="w-6 h-10 border-2 border-white rounded-full flex justify-center cursor-pointer"
+          className={`w-6 h-10 border-2 rounded-full flex justify-center cursor-pointer ${
+            theme === 'dark' ? 'border-white' : 'border-gray-600'
+          }`}
           whileHover={{ scale: 1.2 }}
         >
           <motion.div
@@ -223,7 +246,9 @@ const Hero = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="w-1 h-3 bg-white rounded-full mt-2"
+            className={`w-1 h-3 rounded-full mt-2 ${
+              theme === 'dark' ? 'bg-white' : 'bg-gray-600'
+            }`}
           />
         </motion.div>
       </motion.div>
